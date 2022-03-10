@@ -31,24 +31,22 @@ def slap(update, context):
 
     # get user who sent message
     if msg.from_user.username:
-        curr_user = "@" + escape_markdown(msg.from_user.username)
+        curr_user = f"@{escape_markdown(msg.from_user.username)}"
     else:
         curr_user = "[{}](tg://user?id={})".format(
             msg.from_user.first_name, msg.from_user.id)
-        
 
-    user_id = extract_user(update.effective_message, args)
-    if user_id:
+
+    if user_id := extract_user(update.effective_message, args):
         slapped_user = context.bot.get_chat(user_id)
         user1 = curr_user
         if slapped_user.username:
-            user2 = "@" + escape_markdown(slapped_user.username)
+            user2 = f"@{escape_markdown(slapped_user.username)}"
         else:
             user2 = "[{}](tg://user?id={})".format(
                 slapped_user.first_name, slapped_user.id
             )
 
-    # if no target found, bot targets the sender
     else:
         user1 = "[{}](tg://user?id={})".format(context.bot.first_name, context.bot.id)
         user2 = curr_user
@@ -76,24 +74,22 @@ def hug(update, context):
 
     # get user who sent message
     if msg.from_user.username:
-        curr_user = "@" + escape_markdown(msg.from_user.username)
+        curr_user = f"@{escape_markdown(msg.from_user.username)}"
     else:
         curr_user = "[{}](tg://user?id={})".format(
             msg.from_user.first_name, msg.from_user.id
         )
 
-    user_id = extract_user(update.effective_message, args)
-    if user_id:
+    if user_id := extract_user(update.effective_message, args):
         hugged_user = context.bot.get_chat(user_id)
         user1 = curr_user
         if hugged_user.username:
-            user2 = "@" + escape_markdown(hugged_user.username)
+            user2 = f"@{escape_markdown(hugged_user.username)}"
         else:
             user2 = "[{}](tg://user?id={})".format(
                 hugged_user.first_name, hugged_user.id
             )
 
-    # if no target found, bot targets the sender
     else:
         user1 = "Awwh! [{}](tg://user?id={})".format(
             context.bot.first_name, context.bot.id

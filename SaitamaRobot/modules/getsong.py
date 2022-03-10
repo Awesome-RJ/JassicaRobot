@@ -20,7 +20,7 @@ os.system("rm -rf *.mp3")
 
 def bruh(name):
 
-    os.system("instantmusic -q -s "+name)
+ os.system(f"instantmusic -q -s {name}")
 
 @saitama(outgoing=True, pattern="^/music(?: |$)(.*)")
 async def getmusic(so):
